@@ -1,75 +1,139 @@
 <!DOCTYPE html>  
 <html lang="en">  
 <head>  
-  <meta charset="UTF-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>My Personal Website</title>  
-  <style>  
-    body {  
-      font-family: Arial, sans-serif;  
-      margin: 0;  
-      padding: 20px;  
-      background-color: #f4f4f4;  
-    }  
-    header, footer {  
-      background-color: #333;  
-      color: #fff;  
-      padding: 10px 20px;  
-      text-align: center;  
-    }  
-    main {  
-      background-color: #fff;  
-      padding: 20px;  
-      margin-top: 20px;  
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);  
-    }  
-    section {  
-      margin-bottom: 40px;  
-    }  
-    h2 {  
-      border-bottom: 2px solid #333;  
-      padding-bottom: 5px;  
-    }  
-  </style>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>My Personal Blog</title>  
+    <style>  
+        body {  
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+            line-height: 1.6;  
+            margin: 0;  
+            padding: 0;  
+            background-color: #f5f5f5;  
+        }  
+  
+        header {  
+            background-color: #2c3e50;  
+            color: white;  
+            text-align: center;  
+            padding: 2rem 0;  
+        }  
+  
+        nav {  
+            background-color: #34495e;  
+            padding: 1rem;  
+            text-align: center;  
+        }  
+  
+        nav a {  
+            color: white;  
+            text-decoration: none;  
+            margin: 0 15px;  
+            padding: 5px 10px;  
+            border-radius: 3px;  
+            transition: background-color 0.3s;  
+        }  
+  
+        nav a:hover {  
+            background-color: #465c71;  
+        }  
+  
+        .container {  
+            max-width: 800px;  
+            margin: 0 auto;  
+            padding: 20px;  
+        }  
+  
+        .blog-post {  
+            background-color: white;  
+            border-radius: 8px;  
+            padding: 20px;  
+            margin-bottom: 30px;  
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);  
+        }  
+  
+        .blog-post h2 {  
+            color: #2c3e50;  
+            margin-bottom: 10px;  
+        }  
+  
+        .post-meta {  
+            color: #7f8c8d;  
+            font-size: 0.9em;  
+            margin-bottom: 15px;  
+        }  
+  
+        .video-container {  
+            position: relative;  
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */  
+            height: 0;  
+            overflow: hidden;  
+            margin-bottom: 20px;  
+        }  
+  
+        .video-container iframe {  
+            position: absolute;  
+            top: 0;  
+            left: 0;  
+            width: 100%;  
+            height: 100%;  
+        }  
+  
+        footer {  
+            background-color: #2c3e50;  
+            color: white;  
+            text-align: center;  
+            padding: 1rem;  
+            position: relative;  
+            bottom: 0;  
+            width: 100%;  
+        }  
+    </style>  
 </head>  
 <body>  
+    <header>  
+        <h1>My Personal Blog</h1>  
+        <p>Sharing My Journey Through Videos and Writing</p>  
+    </header>  
   
-  <header>  
-    <h1>Welcome to My Website</h1>  
-  </header>  
+    <nav>  
+        <a href="#home">Home</a>  
+        <a href="#videos">Videos</a>  
+        <a href="#about">About</a>  
+        <a href="#contact">Contact</a>  
+    </nav>  
   
-  <main>  
-    <!-- Video Section -->  
-    <section id="videos">  
-      <h2>My Videos</h2>  
-      <!-- Example: an embedded YouTube video -->  
-      <iframe width="640" height="360" src="https://www.youtube.com/embed/VIDEO_ID"   
-              title="YouTube video player" frameborder="0"  
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"   
-              allowfullscreen>  
-      </iframe>  
-    </section>  
+    <div class="container">  
+        <!-- Blog Post with Video -->  
+        <article class="blog-post">  
+            <h2>My First Vlog Entry</h2>  
+            <div class="post-meta">Posted on March 25, 2025 | By Your Name</div>  
+              
+            <div class="video-container">  
+                <!-- Replace VIDEO_ID with your actual YouTube video ID -->  
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID"   
+                        frameborder="0"   
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"   
+                        allowfullscreen>  
+                </iframe>  
+            </div>  
+              
+            <p>Today I want to share my thoughts about... [Your journal entry content here]</p>  
+            <p>This journey has taught me... [Continue your story]</p>  
+        </article>  
   
-    <!-- Journal Section -->  
-    <section id="journal">  
-      <h2>Journal</h2>  
-      <article>  
-        <h3>Journal Entry Title</h3>  
-        <p>Date: 2025-03-25</p>  
-        <p>This is the content of my first journal entry. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>  
-      </article>  
-      <article>  
-        <h3>Another Category Entry</h3>  
-        <p>Date: 2025-03-26</p>  
-        <p>This is another entry where I share more updates about my journey.</p>  
-      </article>  
-    </section>  
-      
-  </main>  
+        <!-- Another Blog Post -->  
+        <article class="blog-post">  
+            <h2>Reflecting on My Progress</h2>  
+            <div class="post-meta">Posted on March 24, 2025 | By Your Name</div>  
+            <p>In this entry, I want to discuss... [Your journal content here]</p>  
+            <p>The key lessons I've learned are... [Continue your story]</p>  
+        </article>  
+    </div>  
   
-  <footer>  
-    <p>&copy; 2025 Your Name. All rights reserved.</p>  
-  </footer>  
-  
+    <footer>  
+        <p>&copy; 2025 Your Blog Name. All rights reserved.</p>  
+    </footer>  
 </body>  
 </html>  
