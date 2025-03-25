@@ -109,15 +109,16 @@
         <article class="blog-post">  
             <h2>My First Vlog Entry</h2>  
             <div class="post-meta">Posted on March 25, 2025 | By Your Name</div>  
-              
+
             <div class="video-container">  
-                <!-- Replace VIDEO_ID with your actual YouTube video ID -->  
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID"   
+                <iframe width="640" height="360"   
+                        src="https://www.youtube.com/embed/l7Rytb3WuRs"   
+                        title="YouTube video player"   
                         frameborder="0"   
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"   
                         allowfullscreen>  
                 </iframe>  
-            </div>  
+             </div> 
               
             <p>Today I want to share my thoughts about... [Your journal entry content here]</p>  
             <p>This journey has taught me... [Continue your story]</p>  
