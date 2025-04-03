@@ -3,93 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vera's Dance Videos</title>
+    <title>Vera's Dance Archive</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #ff4d6d;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background: #f8f8f8;
-            color: #333;
+            background-color: var(--dark);
+            color: var(--light);
             line-height: 1.6;
         }
+        
         header {
-            background: #000;
-            color: white;
-            padding: 20px 0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 2rem 0;
             text-align: center;
             position: relative;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
+        
         h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
             margin: 0;
-            font-weight: 600;
+            background: linear-gradient(to right, #ff4d6d, #ff8fab);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
         }
+        
         .back-button {
             position: absolute;
-            left: 20px;
-            top: 20px;
-            color: white;
+            left: 2rem;
+            top: 2rem;
+            color: var(--light);
             text-decoration: none;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-        .year-section {
-            margin-bottom: 30px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .year-header {
-            background: #222;
-            color: white;
-            padding: 15px 20px;
-            cursor: pointer;
+            font-size: 1.1rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            font-weight: 600;
+            gap: 0.5rem;
+            transition: var(--transition);
         }
-        .month-section {
-            border-top: 1px solid #eee;
-            background: white;
+        
+        .back-button:hover {
+            color: var(--primary);
+            transform: translateX(-5px);
         }
-        .month-header {
-            padding: 12px 20px;
-            background: #f5f5f5;
-            cursor: pointer;
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .year-section {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .year-marker {
+            position: absolute;
+            left: -50px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
             display: flex;
-            justify-content: space-between;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            box-shadow: 0 0 0 4px var(--dark), 0 0 0 6px var(--primary);
+            z-index: 2;
         }
-        .video-grid {
+        
+        .month-group {
+            margin-bottom: 2rem;
+            padding-left: 30px;
+        }
+        
+        .month-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .month-header::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--light);
+            border: 2px solid var(--primary);
+        }
+        
+        .videos-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            background: white;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
         }
+        
         .video-card {
-            border: 1px solid #eee;
-            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
+        
         .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
-        .video-container {
+        
+        .video-player {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
         }
-        .video-container iframe {
+        
+        .video-player iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -97,127 +162,121 @@
             height: 100%;
             border: none;
         }
+        
         .video-info {
-            padding: 15px;
+            padding: 1.5rem;
         }
+        
         .video-title {
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 0.5rem;
         }
-        .video-date {
-            color: #666;
-            font-size: 0.9em;
+        
+        .video-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
-        .collapsed .video-grid {
-            display: none;
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            margin-top: 4rem;
         }
-        .toggle-icon::after {
-            content: "−";
-        }
-        .collapsed .toggle-icon::after {
-            content: "+";
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .videos-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                padding-left: 30px;
+            }
+            
+            .year-marker {
+                left: -30px;
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <a href="index.html" class="back-button">← Back to Home</a>
-        <h1>My Dance Journey</h1>
+        <a href="index.html" class="back-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Home
+        </a>
+        <h1>Dance Chronology</h1>
     </header>
 
     <div class="container">
-        <!-- 2025 Section -->
-        <div class="year-section">
-            <div class="year-header">
-                <span>2025</span>
-                <span class="toggle-icon"></span>
-            </div>
-            <div class="video-content">
-                <!-- January 2025 -->
-                <div class="month-section">
-                    <div class="month-header">
-                        <span>January</span>
-                        <span class="toggle-icon"></span>
-                    </div>
-                    <div class="video-grid">
+        <div class="timeline">
+            <!-- 2024 Section -->
+            <div class="year-section">
+                <div class="year-marker">2024</div>
+                
+                <!-- October 2024 -->
+                <div class="month-group">
+                    <h2 class="month-header">October</h2>
+                    <div class="videos-container">
                         <div class="video-card">
-                            <div class="video-container">
-                                <iframe src="https://www.youtube.com/embed/EXAMPLE1" frameborder="0" allowfullscreen></iframe>
+                            <div class="video-player">
+                                <iframe src="https://www.youtube.com/embed/Dk4A4pW-nRY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             <div class="video-info">
-                                <div class="video-title">Contemporary Dance Practice</div>
-                                <div class="video-date">January 15, 2025</div>
+                                <h3 class="video-title">Contemporary Movement Exploration</h3>
+                                <p class="video-description">An improvisation session exploring fluid movements and emotional expression through contemporary dance.</p>
                             </div>
                         </div>
+                        
+                        <!-- Additional video template -->
+                        <!--
                         <div class="video-card">
-                            <div class="video-container">
-                                <iframe src="https://www.youtube.com/embed/EXAMPLE2" frameborder="0" allowfullscreen></iframe>
+                            <div class="video-player">
+                                <iframe src="YOUR_VIDEO_URL" frameborder="0" allowfullscreen></iframe>
                             </div>
                             <div class="video-info">
-                                <div class="video-title">Hip Hop Choreography</div>
-                                <div class="video-date">January 22, 2025</div>
+                                <h3 class="video-title">Video Title</h3>
+                                <p class="video-description">Brief description of the dance piece.</p>
                             </div>
                         </div>
+                        -->
                     </div>
                 </div>
                 
-                <!-- February 2025 -->
-                <div class="month-section collapsed">
-                    <div class="month-header">
-                        <span>February</span>
-                        <span class="toggle-icon"></span>
-                    </div>
-                    <div class="video-grid">
-                        <div class="video-card">
-                            <div class="video-container">
-                                <iframe src="https://www.youtube.com/embed/EXAMPLE3" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                            <div class="video-info">
-                                <div class="video-title">Valentine's Day Special</div>
-                                <div class="video-date">February 14, 2025</div>
-                            </div>
-                        </div>
+                <!-- Additional month template -->
+                <!--
+                <div class="month-group">
+                    <h2 class="month-header">Month</h2>
+                    <div class="videos-container">
+                        [Video cards go here]
                     </div>
                 </div>
+                -->
             </div>
-        </div>
-
-        <!-- 2024 Section -->
-        <div class="year-section collapsed">
-            <div class="year-header">
-                <span>2024</span>
-                <span class="toggle-icon"></span>
+            
+            <!-- 2023 Section -->
+            <!--
+            <div class="year-section">
+                <div class="year-marker">2023</div>
+                [Month groups go here]
             </div>
-            <div class="video-content">
-                <!-- December 2024 -->
-                <div class="month-section collapsed">
-                    <div class="month-header">
-                        <span>December</span>
-                        <span class="toggle-icon"></span>
-                    </div>
-                    <div class="video-grid">
-                        <div class="video-card">
-                            <div class="video-container">
-                                <iframe src="https://www.youtube.com/embed/EXAMPLE4" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                            <div class="video-info">
-                                <div class="video-title">Winter Performance</div>
-                                <div class="video-date">December 20, 2024</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            -->
         </div>
     </div>
 
-    <script>
-        document.querySelectorAll('.year-header, .month-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.parentElement;
-                content.classList.toggle('collapsed');
-            });
-        });
-    </script>
+    <footer>
+        <p>&copy; 2024 Vera's Dancing Journey. All rights reserved.</p>
+    </footer>
 </body>
 </html>
