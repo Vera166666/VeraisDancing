@@ -9,14 +9,31 @@
             font-family: Arial, sans-serif;  
             margin: 0;  
             padding: 0;  
-            background: url('homepage_background.gif') no-repeat center center fixed;  
-            background-size: cover;  
+            background: #000000;  
             color: #ffffff;  
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
         }  
+        body::before {
+            content: "";
+            background: url('hp_bg_02.gif') no-repeat right center;
+            background-size: contain;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+        }
         header {  
-            text-align: center;  
-            position: relative;  
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
             z-index: 1;  
+            text-align: left;
+            max-width: 40%;
         }  
         h1 {  
             font-size: 3em;  
@@ -25,55 +42,49 @@
         }  
         h2 {  
             font-size: 1.5em;  
-            margin: 0;  
+            margin: 10px 0 0 0;  
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);  
         }  
         nav {  
             position: absolute;  
             top: 10px;  
             right: 20px;  
+            z-index: 2;
         }  
         nav a {  
             color: #ffffff;  
             text-decoration: none;  
             margin: 0 10px;  
         }  
-        .container {  
-            text-align: center;  
-            margin-top: 20%;  
-        }  
         footer {  
             text-align: center;  
             padding: 10px 0;  
             background: rgba(0, 0, 0, 0.5);  
             color: #ffffff;  
-            position: relative;  
+            position: absolute;  
             bottom: 0;  
             width: 100%;  
+            z-index: 1;
         }  
     </style>  
 </head>  
 <body>  
   
     <header>  
-        <nav>  
-            <a href="about.html">About Me</a>  
-            <a href="videos.html">Videos</a>  
-            <a href="journals.html">Journals</a>  
-            <a href="contact.html">Contact Me</a>  
-        </nav>  
         <h1>Vera Is Dancing</h1>  
         <h2>Sharing My Dancing Videos and Thoughts Here</h2>  
     </header>  
   
-    <div class="container">  
-        <h2>Welcome to My Blog</h2>  
-        <p>Here you will find my latest dance videos and journal entries.</p>  
-    </div>  
+    <nav>  
+        <a href="about.html">About Me</a>  
+        <a href="videos.html">Videos</a>  
+        <a href="journals.html">Journals</a>  
+        <a href="contact.html">Contact Me</a>  
+    </nav>  
   
     <footer>  
         <p>&copy; 2025 Vera. All rights reserved.</p>  
     </footer>  
   
 </body>  
-</html>  
+</html>
