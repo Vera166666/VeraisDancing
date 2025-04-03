@@ -6,7 +6,7 @@
     <title>Vera's Dance Archive</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --dark: #0a0a0a;
@@ -33,11 +33,9 @@
         }
         
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin: 0;
             color: white;
-            letter-spacing: 1px;
             font-weight: 400;
         }
         
@@ -65,74 +63,76 @@
             padding: 0 2rem;
         }
         
-        .timeline {
-            position: relative;
-            padding-left: 50px;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
         .year-section {
-            margin-bottom: 4rem;
-            position: relative;
+            margin-bottom: 2rem;
         }
         
-        .year-marker {
-            position: absolute;
-            left: -50px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--medium);
+        .year-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: 400;
-            color: white;
-            z-index: 2;
-            font-size: 0.9rem;
+            cursor: pointer;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            user-select: none;
+        }
+        
+        .year-header::after {
+            content: '+';
+            margin-left: auto;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .year-header.active::after {
+            content: '-';
+        }
+        
+        .year-content {
+            display: none;
+            padding-left: 1rem;
+        }
+        
+        .year-content.active {
+            display: block;
         }
         
         .month-group {
-            margin-bottom: 3rem;
-            padding-left: 30px;
+            margin: 2rem 0;
         }
         
         .month-header {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            user-select: none;
             color: var(--light);
-            position: relative;
-            letter-spacing: 1px;
-            text-transform: uppercase;
             opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
         }
         
-        .month-header::before {
-            content: '';
-            position: absolute;
-            left: -30px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--light);
-            top: 50%;
-            transform: translateY(-50%);
+        .month-header::after {
+            content: '+';
+            margin-left: auto;
+            transition: var(--transition);
+        }
+        
+        .month-header.active::after {
+            content: '-';
         }
         
         .videos-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
+            padding: 1rem 0;
+            display: none;
+        }
+        
+        .month-header.active + .videos-container {
+            display: grid;
         }
         
         .video-item {
@@ -144,7 +144,7 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
         
         .video-player iframe {
@@ -156,18 +156,11 @@
             border: none;
         }
         
-        /* Remove YouTube branding and controls */
-        .video-player iframe {
-            -webkit-filter: grayscale(100%);
-            filter: grayscale(100%);
-        }
-        
         .video-title {
             font-size: 1rem;
             font-weight: 400;
             color: white;
             margin: 0;
-            letter-spacing: 0.5px;
         }
         
         footer {
@@ -188,23 +181,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .timeline {
-                padding-left: 30px;
-            }
-            
-            .year-marker {
-                left: -30px;
-                width: 30px;
-                height: 30px;
-                font-size: 0.8rem;
-            }
-            
             header {
                 padding: 2rem 0 1.5rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
             }
         }
     </style>
@@ -221,18 +199,17 @@
     </header>
 
     <div class="container">
-        <div class="timeline">
-            <!-- 2024 Section -->
-            <div class="year-section">
-                <div class="year-marker">2024</div>
-                
+        <!-- 2024 Section -->
+        <div class="year-section">
+            <div class="year-header active">2024</div>
+            <div class="year-content active">
                 <!-- October 2024 -->
                 <div class="month-group">
-                    <h2 class="month-header">October</h2>
+                    <div class="month-header active">October</div>
                     <div class="videos-container">
                         <div class="video-item">
                             <div class="video-player">
-                                <iframe src="https://www.youtube.com/embed/Dk4A4pW-nRY?modestbranding=1&rel=0&controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/Dk4A4pW-nRY?modestbranding=1" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                             </div>
                             <h3 class="video-title">Jervin's Mentorship Program</h3>
                         </div>
@@ -241,11 +218,11 @@
                 
                 <!-- June 2024 -->
                 <div class="month-group">
-                    <h2 class="month-header">June</h2>
+                    <div class="month-header">June</div>
                     <div class="videos-container">
                         <div class="video-item">
                             <div class="video-player">
-                                <iframe src="https://www.youtube.com/embed/K5Zkt0FtHKI?modestbranding=1&rel=0&controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/K5Zkt0FtHKI?modestbranding=1" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                             </div>
                             <h3 class="video-title">Don's Class</h3>
                         </div>
@@ -258,5 +235,22 @@
     <footer>
         <p>&copy; 2024 Vera's Dance Archive</p>
     </footer>
+
+    <script>
+        // Toggle year sections
+        document.querySelectorAll('.year-header').forEach(header => {
+            header.addEventListener('click', () => {
+                header.classList.toggle('active');
+                header.nextElementSibling.classList.toggle('active');
+            });
+        });
+
+        // Toggle month sections
+        document.querySelectorAll('.month-header').forEach(header => {
+            header.addEventListener('click', () => {
+                header.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html>
