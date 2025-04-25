@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vera's Random Thoughts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark: #0a0a0a;
+            --medium: #333333;
+            --light: #f0f0f0;
+            --gold: #d4af37;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: var(--dark);
+            padding: 2rem 0 1.5rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: white;
+            font-weight: 400;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .back-button {
+            position: absolute;
+            left: 1.5rem;
+            top: 1.5rem;
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            opacity: 0.7;
+        }
+        
+        .back-button:hover {
+            opacity: 1;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .journal-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .journal-preview {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+            background: rgba(20, 20, 20, 0.6);
+            border-radius: 6px;
+            padding: 1.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .journal-preview:hover {
+            transform: translateY(-3px);
+            background: rgba(30, 30, 30, 0.6);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+        
+        .preview-image-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .preview-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .journal-preview:hover .preview-image {
+            transform: scale(1.02);
+        }
+        
+        .preview-text {
+            padding: 0 0.5rem;
+        }
+        
+        .preview-date {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .preview-title {
+            font-size: 1.3rem;
+            margin: 0;
+            font-weight: 500;
+            font-family: 'Cormorant Garamond', serif;
+            color: white;
+            line-height: 1.3;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 3rem;
+            opacity: 0.6;
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            header {
+                padding: 1.8rem 0 1.2rem;
+            }
+            
+            .journal-preview {
+                padding: 1.2rem;
+            }
+            
+            .preview-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back
+        </a>
+        <h1>Random Thoughts</h1>
+    </header>
+
+    <div class="container">
+        <div class="journal-grid">
+            <!-- Journal Preview 1 (Newest) -->
+            <a href="journal-post-1.html" class="journal-preview">
+                <div class="preview-image-container">
+                    <img src="journal-1.jpg" alt="Dancer in silhouette" class="preview-image">
+                </div>
+                <div class="preview-text">
+                    <div class="preview-date">March 10, 2025</div>
+                    <h2 class="preview-title">Struggle after long break</h2>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Vera's Random Thoughts</p>
+    </footer>
+</body>
+</html>
